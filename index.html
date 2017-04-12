@@ -13,17 +13,19 @@
     <p style="font-size:30px;">This Paragraph holds the story snippets while reader types their story snippet below</p>
     <br>
     
-    <textarea maxlength="200"
+    <textarea id="textarea"
+              autofocus="autofocus"
+              maxlength="200"
+              onkeyup="countChars()"
               placeholder="this size seems fine"//todo change this
               style="font-size:25px;
                      margin-right:auto;
                      margin-left:auto;
                      width:100%; 
-                     height:200px;">
-    </textarea>
+                     height:200px;"></textarea>
     
     <br>    
-    200 characters left 
+    <p id="charsleft">200 characters left</p> 
     <button style="float:right;
                    padding:10px;">
         
@@ -31,9 +33,19 @@
     </button>
     <br>
     
-    
     <a href="#">Pass</a>
 
+    <script>
+        var textArea = document.getElementById("textarea");
+        var charCountDisplay = document.getElementById("charsleft");
+        
+        function countChars(){
+            var charCount = textArea.value.length;
+            
+            charCountDisplay.innerText = 200-charCount + " characters left";
+        
+        }
+        
+    </script>
 </body>
-
 </html>
